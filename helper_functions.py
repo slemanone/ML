@@ -118,11 +118,10 @@ def pred_and_plot(model, filename, class_names):
 
   # Make a prediction
   pred = model.predict(tf.expand_dims(img, axis=0))
-
+  pred = pred[0]
   # Get the predicted class
   if len(class_names) > 2: # check for multi-class
-    pred_class_index = int(pred.argmax())  
-    pred_class = class_names[pred_class_index] # if more than one output, take the max
+    pred_class = class_names[pred.argmax()] # if more than one output, take the max
   else:
     pred_class = class_names[int(tf.round(pred)[0][0])] # if only one output, round
 
