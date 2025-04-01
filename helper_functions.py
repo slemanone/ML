@@ -121,7 +121,7 @@ def pred_and_plot(model, filename, class_names):
 
   # Get the predicted class
   if len(class_names) > 2: # check for multi-class
-    pred_class = class_names[np.argmax(pred)] # if more than one output, take the max
+    pred_class = class_names[pred.argmax()] # if more than one output, take the max
   else:
     pred_class = class_names[int(tf.round(pred)[0][0])] # if only one output, round
 
