@@ -118,7 +118,10 @@ def pred_and_plot(model, filename, class_names):
 
   # Make a prediction
   pred = model.predict(tf.expand_dims(img, axis=0))
-  
+  print("Pred shape:", pred.shape)       # Should be (1, 101)
+  print("Argmax:", tf.argmax(pred[0])) 
+  print("Pred[0] top 5:", tf.math.top_k(pred[0], k=5))
+
   # Get the predicted class
   if len(class_names) > 2: # check for multi-class
     pred_class_index = tf.argmax(pred[0]).numpy()
